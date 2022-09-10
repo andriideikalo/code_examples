@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@900&display=swap');
+
+@ratio: 630/955;
+@height: 70vh;
+@width: @height * @ratio;
+@n_char: 15;
+@twopi: pi() * 2;
+
+div {
+    height: @height;
+    width: @width;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    perspective: 1000px;
+    img {
+        position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%;
+        &#fg {
+            clip-path: polygon(53.9% 51.0%,57.9% 45.0%,58.9% 44.4%,63.9% 43.0%,66.3% 42.7%,67.9% 40.7%,66.3% 37.0%,64.9% 36.4%,64.9% 35.0%,63.3% 33.7%,63.3% 31.0%,57.9% 28.7%,57.9% 28.0%,57.9% 27.7%,55.9% 24.4%,46.3% 20.4%,42.3% 18.4%,32.6% 18.7%,25.3% 21.7%,21.3% 24.7%,15.9% 34.0%,16.6% 39.0%,12.3% 46.7%,12.6% 55.4%,11.6% 60.4%,7.6% 67.0%,6.9% 74.4%,8.9% 77.7%,8.9% 80.4%,11.9% 83.7%,10.9% 90.7%,12.9% 92.4%,11.6% 98.7%,79.6% 99.4%,64.9% 95.0%,69.9% 88.4%,68.9% 84.0%,67.9% 78.0%,66.3% 74.4%,63.6% 71.0%,62.6% 68.4%,62.6% 64.7%,59.3% 57.7%,55.6% 52.7%,53.9% 52.0%);
+        }
+        &#bg {
+            transform: translatez(-200px)scale(1.2);
+        }
+    }
+    span {
+        position: absolute; top: 50%; left: 42%;
+        color: cornsilk;
+        text-shadow: 0 0 2px black;
+        font: 10vh 'Big Shoulders Inline Text', cursive;
+    }
+    .make_chars(@n_char);
+}
+
+
+.make_chars(@N; @i:1) when (@i <= @N) {
+    .make_chars(@N; @i + 1);
+    @ang: @i / @N * pi() * 2rad;
+    span:nth-of-type(@{i}) {
+        animation: 4s ~"an@{i}" infinite steps(100);
+    }
+    @keyframes ~"an@{i}" {
+       .make_anim(10, @ang);
+    }
+}
+
+.make_anim(@n_frame; @ang; @i: 0) when (@i <= @n_frame) {
+    .make_anim(@n_frame; @ang; @i + 1);
+    @norm: @i / @n_frame;
+    @frame: percentage(@norm);
+    @R: @width / 2.5;
+    @{frame} { transform: translate3d(@R * sin(@ang - @twopi * @norm), 0, @R * cos(@ang - @twopi * @norm)) }
+}
+
+body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}
+
+ul#credits {
+    display: flex;
+    position: fixed; top: 0; left: 0;
+    padding: 5vmin;
+    a {
+        color: currentcolor;
+        font-size: smaller; 
+    }
+    li + li:before {
+        content: "|";
+        padding: 2ch;
+    }
+}
