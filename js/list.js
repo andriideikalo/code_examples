@@ -1,4 +1,4 @@
-new Vue({
+new Vue ({
     el: "#taskList",
     data: {
       title: "to do list",
