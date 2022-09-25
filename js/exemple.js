@@ -112,33 +112,51 @@
 //   }
 
 
-const books = [
-    {
-      title: "The Last Kingdom",
-      author: "Bernard Cornwell",
-      rating: 8.38,
-    },
-    {
-      title: "На берегу спокойных вод",
-      author: "Роберт Шекли",
-      rating: 8.51,
-    },
-    {
-      title: "Сон смешного человека",
-      author: "Федор Достоевский",
-      rating: 7.75,
-    },
-];
+// const books = [
+//     {
+//       title: "The Last Kingdom",
+//       author: "Bernard Cornwell",
+//       rating: 8.38,
+//     },
+//     {
+//       title: "На берегу спокойных вод",
+//       author: "Роберт Шекли",
+//       rating: 8.51,
+//     },
+//     {
+//       title: "Сон смешного человека",
+//       author: "Федор Достоевский",
+//       rating: 7.75,
+//     },
+// ];
 
 
 
 
-let bookNames = 0;
+// let bookNames = 0;
 
-for (const book of books) {
-    bookNames += book.rating;
+// for (const book of books) {
+//     bookNames += book.rating;
     
-}
-let total = (bookNames / books.length).toFixed(3); 
+// }
+// let total = (bookNames / books.length).toFixed(3);
 
-console.log(total);
+// console.log(total);
+
+const apartment = {
+    imgUrl: "https://via.placeholder.com/640x480",
+    descr: "Spacious apartment in the city center",
+    rating: 4,
+    price: 2153,
+    tags: ["premium", "promoted", "top"],
+  };
+  apartment.owner = {
+  name: "Henry",
+  phone: "982-126-1588",
+  email: "henry.carter@aptmail.com",
+  };
+  
+console.log(apartment);
+
+
+
